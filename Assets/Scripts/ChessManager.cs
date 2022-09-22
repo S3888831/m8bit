@@ -12,12 +12,17 @@ public class ChessManager : MonoBehaviour
     private int xBoard = -1;
     private int yBoard = -1;
 
+    // piece tracker
+    private string piece;
+
     //variable to keep track of black or white player
     private string player;
 
     //references for all sprites that the pieces can be
     public Sprite blackQueen, blackKnight, blackBishop, blackKing, blackRook, blackPawn;
     public Sprite whiteQueen, whiteKnight, whiteBishop, whiteKing, whiteRook, whitePawn;
+
+
 
     public void Activate()
     {
@@ -112,10 +117,12 @@ public class ChessManager : MonoBehaviour
                 LineMovePlate(-1, -1);
                 LineMovePlate(-1, 1);
                 LineMovePlate(1, -1);
+                piece = "Q";
                 break;
             case "blackKnight":
             case "whiteKnight":
                 LMovePlate();
+                piece = "N";
                 break;
             case "blackBishop":
             case "whiteBishop":
@@ -123,10 +130,17 @@ public class ChessManager : MonoBehaviour
                 LineMovePlate(1, -1);
                 LineMovePlate(-1, 1);
                 LineMovePlate(-1, -1);
+                piece = "B";
                 break;
             case "blackKing":
+                SurroundMovePlate();
+                //CastleMovePlateBlack(7);
+                piece = "K";
+                break;
             case "whiteKing":
                 SurroundMovePlate();
+                //CastleMovePlateWhite(0);
+                piece = "K";
                 break;
             case "blackRook":
             case "whiteRook":
@@ -134,12 +148,31 @@ public class ChessManager : MonoBehaviour
                 LineMovePlate(0, 1);
                 LineMovePlate(-1, 0);
                 LineMovePlate(0, -1);
+                piece = "R";
                 break;
             case "blackPawn":
-                PawnMovePlate(xBoard, yBoard - 1);
+                if (yBoard == 6)
+                {
+                    PawnMovePlate(xBoard, yBoard - 1);
+                    PawnMovePlate(xBoard, yBoard - 2);
+                }
+                else
+                {
+                    PawnMovePlate(xBoard, yBoard - 1);
+                }
+                piece = "";
                 break;
             case "whitePawn":
-                PawnMovePlate(xBoard, yBoard + 1);
+                if (yBoard == 1)
+                {
+                    PawnMovePlate(xBoard, yBoard + 1);
+                    PawnMovePlate(xBoard, yBoard + 2);
+                }
+                else
+                {
+                    PawnMovePlate(xBoard, yBoard + 1);
+                }
+                piece = "";
                 break;
         }
     }
@@ -230,6 +263,52 @@ public class ChessManager : MonoBehaviour
     }
 
 
+    //CASTLING
+    public void CastleMovePlateWhite(int y)
+    {
+        Game sc = controller.GetComponent<Game>();
+
+        if (sc.GetCastleWhiteLeft() == true)
+        {
+            if (sc.GetPosition(1, 0) == null && sc.GetPosition(2,0) == null && sc.GetPosition(3,0) == null)
+            {
+                MovePlateSpawn(2, y);
+            }
+
+        }
+
+        if (sc.GetCastleWhiteRight() == true)
+        {
+            if (sc.GetPosition(5,0) == null && sc.GetPosition(6,0) == null)
+            {
+                MovePlateSpawn(6, y);
+            }
+        }
+    }
+
+    public void CastleMovePlateBlack(int y)
+    {
+        Game sc = controller.GetComponent<Game>();
+
+        if (sc.GetCastleBlackLeft() == true)
+        {
+            if (sc.GetPosition(1, 7) == null && sc.GetPosition(2, 7) == null && sc.GetPosition(3, 7) == null)
+            {
+                MovePlateSpawn(2, y);
+            }
+
+        }
+
+        if (sc.GetCastleBlackRight() == true)
+        {
+            if (sc.GetPosition(5, 7) == null && sc.GetPosition(6, 7) == null)
+            {
+                MovePlateSpawn(6, y);
+            }
+        }
+    }
+
+
     public void MovePlateSpawn(int matrixX, int matrixY)
     {
         float x = matrixX;
@@ -239,14 +318,14 @@ public class ChessManager : MonoBehaviour
         y *= 1.12f;
 
         x += -4.1f;
-        y += -3.55f;
+        y += -3.92f;
 
 
         GameObject mp = Instantiate(movePlate, new Vector3(x, y, -3.0f), Quaternion.identity);
 
         MovePlate mpScript = mp.GetComponent<MovePlate>();
         mpScript.SetReference(gameObject);
-        mpScript.SetCoords(matrixX, matrixX);
+        mpScript.SetCoords(matrixX, matrixY);
     }
 
     public void MovePlateAttackSpawn(int matrixX, int matrixY)
@@ -258,7 +337,7 @@ public class ChessManager : MonoBehaviour
         y *= 1.12f;
 
         x += -4.1f;
-        y += -3.55f;
+        y += -3.95f;
 
 
         GameObject mp = Instantiate(movePlate, new Vector3(x, y, -3.0f), Quaternion.identity);
@@ -266,6 +345,47 @@ public class ChessManager : MonoBehaviour
         MovePlate mpScript = mp.GetComponent<MovePlate>();
         mpScript.attack = true;
         mpScript.SetReference(gameObject);
-        mpScript.SetCoords(matrixX, matrixX);
+        mpScript.SetCoords(matrixX, matrixY);
     }
+
+    void Update()
+
+    {
+        switch (this.name)
+        {
+            case "blackPawn":
+                if (yBoard == 0)
+                {
+                    GameObject cp = controller.GetComponent<Game>().GetPosition(xBoard, yBoard);
+                    cp.name = "blackQueen";
+                    this.GetComponent<SpriteRenderer>().sprite = blackQueen; player = "black";
+                }
+                break;
+
+            case "whitePawn":
+                if (yBoard == 7)
+                {
+                    GameObject cp = controller.GetComponent<Game>().GetPosition(xBoard, yBoard);
+                    cp.name = "whiteQueen";
+                    this.GetComponent<SpriteRenderer>().sprite = whiteQueen;  player = "white";
+                }
+                break;
+
+        }
+
+    }
+
+    // piece getter
+
+    public string GetPiece()
+    {
+        return piece;
+    }
+
+
+
+
+
+
+
 }

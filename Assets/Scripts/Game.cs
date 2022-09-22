@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Game : MonoBehaviour
 {
 
     public GameObject chessPiece;
+
+    public TMP_Text movePositon; 
+
 
     //positions and team for each chess peice
     private GameObject[,] positions = new GameObject[8, 8];
@@ -13,6 +18,13 @@ public class Game : MonoBehaviour
     private GameObject[] playerWhite = new GameObject[16];
 
     private string currentPlayer = "white";
+
+    // castling 
+    private bool castleWhiteRight = true;
+    private bool castleWhiteLeft = true;
+    private bool castleBlackRight = true;
+    private bool castleBlackLeft = true;
+
 
     private bool gameOver = false;
 
@@ -69,6 +81,7 @@ public class Game : MonoBehaviour
             SetPosition(playerWhite[i]);
 
         }
+
     }
 
     public GameObject Create(string name, int x, int y)
@@ -89,6 +102,7 @@ public class Game : MonoBehaviour
         positions[cm.GetXBoard(), cm.GetYBoard()] = obj;
     }
 
+
     public void SetPositionEmpty(int x, int y)
     {
         positions[x, y] = null;
@@ -103,5 +117,56 @@ public class Game : MonoBehaviour
     {
         if (x < 0 || y < 0 || x >= positions.GetLength(0) || y >= positions.GetLength(1)) return false;
         return true;
+    }
+
+
+
+    // CASTLE SETTERS
+    public void SetCastleWhiteRight(bool status)
+    {
+        castleWhiteRight = status;
+    }
+
+    public void SetCastleWhiteLeft(bool status)
+    {
+        castleWhiteLeft = status;
+    }
+
+    public void SetCastleBlackRight(bool status)
+    {
+        castleBlackRight = status;
+    }
+
+    public void SetCastleBlackLeft(bool status)
+    {
+        castleBlackLeft = status;
+    }
+
+    // CASTLE GETTERS
+    public bool GetCastleWhiteRight()
+    {
+        return castleWhiteRight;
+    }
+
+    public bool GetCastleWhiteLeft()
+    {
+        return castleWhiteLeft;
+    }
+
+    public bool GetCastleBlackRight()
+    {
+        return castleBlackRight;
+    }
+
+    public bool GetCastleBlackLeft()
+    {
+        return castleBlackLeft;
+    }
+
+    // text setter
+
+    public void textSetter(string move)
+    {
+        movePositon.text = move;
     }
 }
