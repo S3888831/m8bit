@@ -9,13 +9,24 @@ public class Game : MonoBehaviour
 
     public GameObject chessPiece;
 
-    public TMP_Text movePositon; 
+    public TMP_Text movePositon;
+
+    public int moveCount;
+
+    public TMP_Text move1;
+    public TMP_Text move2;
+    public TMP_Text move3;
+    public TMP_Text move4;
+    public TMP_Text move5;
 
 
     //positions and team for each chess peice
     private GameObject[,] positions = new GameObject[8, 8];
     private GameObject[] playerBlack = new GameObject[16];
     private GameObject[] playerWhite = new GameObject[16];
+
+    private GameObject[,] underAttack = new GameObject[8, 8];
+
 
     private string currentPlayer = "white";
 
@@ -82,6 +93,7 @@ public class Game : MonoBehaviour
 
         }
 
+
     }
 
     public GameObject Create(string name, int x, int y)
@@ -92,6 +104,15 @@ public class Game : MonoBehaviour
         cm.SetXBoard(x);
         cm.SetYBoard(y);
         cm.Activate();
+        if (name == "blackKing" || name == "whiteKing")
+        {
+            cm.SetKing(true);
+        }
+        else
+        {
+            cm.SetKing(false);
+        }
+
         return obj;
     }
 
@@ -165,8 +186,49 @@ public class Game : MonoBehaviour
 
     // text setter
 
-    public void textSetter(string move)
+    //public void textSetter(string move)
+    //{
+    //    movePositon.text = move;
+    //}
+
+    // move setters
+
+    public void SetMove1(string move)
     {
-        movePositon.text = move;
+        move1.text = move;
     }
-}
+
+    public void SetMove2(string move)
+    {
+        move2.text = move;
+    }
+
+    public void SetMove3(string move)
+    {
+        move3.text = move;
+    }
+
+    public void SetMove4(string move)
+    {
+        move4.text = move;
+    }
+
+    public void SetMove5(string move)
+    {
+        move5.text = move;
+    }
+
+
+
+    // move count getter
+
+    public int GetMoveCount()
+    {
+        return moveCount;
+    }
+
+    public void IncrementMoveCount()
+    {
+        moveCount += 1;
+    }
+}   

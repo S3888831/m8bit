@@ -22,6 +22,8 @@ public class ChessManager : MonoBehaviour
     public Sprite blackQueen, blackKnight, blackBishop, blackKing, blackRook, blackPawn;
     public Sprite whiteQueen, whiteKnight, whiteBishop, whiteKing, whiteRook, whitePawn;
 
+    public bool isKing;
+
 
 
     public void Activate()
@@ -383,9 +385,15 @@ public class ChessManager : MonoBehaviour
     }
 
 
+    public void SetKing(bool state)
+    {
+        isKing = state;
+    }
 
-
-
+    public bool GetKingStatus()
+    {
+        return isKing;
+    }
 
 
 }

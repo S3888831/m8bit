@@ -12,6 +12,7 @@ public class MovePlate : MonoBehaviour
 
     GameObject reference = null;
 
+
     int matrixX;
     int matrixY;
     string notation;
@@ -31,6 +32,8 @@ public class MovePlate : MonoBehaviour
     public void OnMouseUp()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
+
+        controller.GetComponent<Game>().IncrementMoveCount();
 
         if (attack)
         {
@@ -68,7 +71,26 @@ public class MovePlate : MonoBehaviour
 
         Debug.Log(notation);
 
-        controller.GetComponent<Game>().textSetter(notation);
+        switch (controller.GetComponent<Game>().GetMoveCount())
+        {
+            case 1:
+                controller.GetComponent<Game>().SetMove1(notation);
+                break;
+            case 2:
+                controller.GetComponent<Game>().SetMove2(notation);
+                break;
+            case 3:
+                controller.GetComponent<Game>().SetMove3(notation);
+                break;
+            case 4:
+                controller.GetComponent<Game>().SetMove4(notation);
+                break;
+            case 5:
+                controller.GetComponent<Game>().SetMove5(notation);
+                break;
+        }
+
+        //controller.GetComponent<Game>().textSetter(notation);
 
 
         ////black king 
@@ -131,7 +153,7 @@ public class MovePlate : MonoBehaviour
         //    {
         //        if (matrixX == 6)
         //        {
-                    
+
         //        }
         //    }
 
@@ -142,8 +164,7 @@ public class MovePlate : MonoBehaviour
         //Debug.Log(controller.GetComponent<Game>().GetCastleBlackLeft());
         //Debug.Log(controller.GetComponent<Game>().GetCastleBlackRight());
 
-
-
+        Debug.Log(reference.GetComponent<ChessManager>().GetKingStatus());
 
         reference.GetComponent<ChessManager>().SetXBoard(matrixX);
         reference.GetComponent<ChessManager>().SetYBoard(matrixY);
