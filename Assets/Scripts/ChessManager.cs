@@ -22,6 +22,7 @@ public class ChessManager : MonoBehaviour
     public Sprite blackQueen, blackKnight, blackBishop, blackKing, blackRook, blackPawn;
     public Sprite whiteQueen, whiteKnight, whiteBishop, whiteKing, whiteRook, whitePawn;
 
+    //add comment
     public bool isKing;
 
 
