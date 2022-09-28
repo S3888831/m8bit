@@ -266,50 +266,50 @@ public class ChessManager : MonoBehaviour
     }
 
 
-    //CASTLING
-    public void CastleMovePlateWhite(int y)
-    {
-        Game sc = controller.GetComponent<Game>();
+    ////CASTLING
+    //public void CastleMovePlateWhite(int y)
+    //{
+    //    Game sc = controller.GetComponent<Game>();
 
-        if (sc.GetCastleWhiteLeft() == true)
-        {
-            if (sc.GetPosition(1, 0) == null && sc.GetPosition(2,0) == null && sc.GetPosition(3,0) == null)
-            {
-                MovePlateSpawn(2, y);
-            }
+    //    if (sc.GetCastleWhiteLeft() == true)
+    //    {
+    //        if (sc.GetPosition(1, 0) == null && sc.GetPosition(2,0) == null && sc.GetPosition(3,0) == null)
+    //        {
+    //            MovePlateSpawn(2, y);
+    //        }
 
-        }
+    //    }
 
-        if (sc.GetCastleWhiteRight() == true)
-        {
-            if (sc.GetPosition(5,0) == null && sc.GetPosition(6,0) == null)
-            {
-                MovePlateSpawn(6, y);
-            }
-        }
-    }
+    //    if (sc.GetCastleWhiteRight() == true)
+    //    {
+    //        if (sc.GetPosition(5,0) == null && sc.GetPosition(6,0) == null)
+    //        {
+    //            MovePlateSpawn(6, y);
+    //        }
+    //    }
+    //}
 
-    public void CastleMovePlateBlack(int y)
-    {
-        Game sc = controller.GetComponent<Game>();
+    //public void CastleMovePlateBlack(int y)
+    //{
+    //    Game sc = controller.GetComponent<Game>();
 
-        if (sc.GetCastleBlackLeft() == true)
-        {
-            if (sc.GetPosition(1, 7) == null && sc.GetPosition(2, 7) == null && sc.GetPosition(3, 7) == null)
-            {
-                MovePlateSpawn(2, y);
-            }
+    //    if (sc.GetCastleBlackLeft() == true)
+    //    {
+    //        if (sc.GetPosition(1, 7) == null && sc.GetPosition(2, 7) == null && sc.GetPosition(3, 7) == null)
+    //        {
+    //            MovePlateSpawn(2, y);
+    //        }
 
-        }
+    //    }
 
-        if (sc.GetCastleBlackRight() == true)
-        {
-            if (sc.GetPosition(5, 7) == null && sc.GetPosition(6, 7) == null)
-            {
-                MovePlateSpawn(6, y);
-            }
-        }
-    }
+    //    if (sc.GetCastleBlackRight() == true)
+    //    {
+    //        if (sc.GetPosition(5, 7) == null && sc.GetPosition(6, 7) == null)
+    //        {
+    //            MovePlateSpawn(6, y);
+    //        }
+    //    }
+    //}
 
 
     public void MovePlateSpawn(int matrixX, int matrixY)

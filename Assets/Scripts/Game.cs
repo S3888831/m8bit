@@ -19,6 +19,7 @@ public class Game : MonoBehaviour
     public TMP_Text move4;
     public TMP_Text move5;
 
+    
 
     //positions and team for each chess peice
     private GameObject[,] positions = new GameObject[8, 8];
@@ -26,7 +27,6 @@ public class Game : MonoBehaviour
     private GameObject[] playerWhite = new GameObject[16];
 
     private GameObject[,] underAttack = new GameObject[8, 8];
-
 
     private string currentPlayer = "white";
 
@@ -104,14 +104,14 @@ public class Game : MonoBehaviour
         cm.SetXBoard(x);
         cm.SetYBoard(y);
         cm.Activate();
-        if (name == "blackKing" || name == "whiteKing")
-        {
-            cm.SetKing(true);
-        }
-        else
-        {
-            cm.SetKing(false);
-        }
+        //if (name == "blackKing" || name == "whiteKing")
+        //{
+        //    cm.SetKing(true);
+        //}
+        //else
+        //{
+        //    cm.SetKing(false);
+        //}
 
         return obj;
     }
@@ -163,26 +163,26 @@ public class Game : MonoBehaviour
         castleBlackLeft = status;
     }
 
-    // CASTLE GETTERS
-    public bool GetCastleWhiteRight()
-    {
-        return castleWhiteRight;
-    }
+    //// CASTLE GETTERS
+    //public bool GetCastleWhiteRight()
+    //{
+    //    return castleWhiteRight;
+    //}
 
-    public bool GetCastleWhiteLeft()
-    {
-        return castleWhiteLeft;
-    }
+    //public bool GetCastleWhiteLeft()
+    //{
+    //    return castleWhiteLeft;
+    //}
 
-    public bool GetCastleBlackRight()
-    {
-        return castleBlackRight;
-    }
+    //public bool GetCastleBlackRight()
+    //{
+    //    return castleBlackRight;
+    //}
 
-    public bool GetCastleBlackLeft()
-    {
-        return castleBlackLeft;
-    }
+    //public bool GetCastleBlackLeft()
+    //{
+    //    return castleBlackLeft;
+    //}
 
     // text setter
 
