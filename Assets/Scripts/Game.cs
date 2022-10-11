@@ -274,6 +274,6 @@ public class Game : MonoBehaviour
 
     public string[] GetMoveHistory()
     {
-        return moveHistory[];
+        return moveHistory;
     }
 }   
