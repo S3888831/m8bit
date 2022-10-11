@@ -92,10 +92,15 @@ public class ChessManager : MonoBehaviour
 
     public void OnMouseUp()
     {
-        DestroyMovePlates();
+        if (!controller.GetComponent<Game>().IsGameOver() && controller.GetComponent<Game>().GetCurrentPlayer() == player)
+        {
+            DestroyMovePlates();
 
-        InitiateMovePlates();
+            InitiateMovePlates();
+        }
+
     }
+
 
     public void DestroyMovePlates()
     {
