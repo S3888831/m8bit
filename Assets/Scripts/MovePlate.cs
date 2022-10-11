@@ -92,6 +92,9 @@ public class MovePlate : MonoBehaviour
 
         //controller.GetComponent<Game>().textSetter(notation);
 
+        controller.GetComponent<Game>().AddMove(notation);
+
+        Debug.Log(controller.GetComponent<Game>().GetMoveHistory());
 
         ////black king 
         //if (pieceName == "blackKing")
@@ -164,13 +167,15 @@ public class MovePlate : MonoBehaviour
         //Debug.Log(controller.GetComponent<Game>().GetCastleBlackLeft());
         //Debug.Log(controller.GetComponent<Game>().GetCastleBlackRight());
 
-        Debug.Log(reference.GetComponent<ChessManager>().GetKingStatus());
+        //Debug.Log(reference.GetComponent<ChessManager>().GetKingStatus());
 
         reference.GetComponent<ChessManager>().SetXBoard(matrixX);
         reference.GetComponent<ChessManager>().SetYBoard(matrixY);
         reference.GetComponent<ChessManager>().SetCoords();
 
         controller.GetComponent<Game>().SetPosition(reference);
+
+        controller.GetComponent<Game>().NextTurn();
 
         reference.GetComponent<ChessManager>().DestroyMovePlates();
 

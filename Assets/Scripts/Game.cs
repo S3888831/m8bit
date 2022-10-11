@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -19,7 +20,9 @@ public class Game : MonoBehaviour
     public TMP_Text move4;
     public TMP_Text move5;
 
-    
+    public string[] moveHistory = new string[5];
+
+
 
     //positions and team for each chess peice
     private GameObject[,] positions = new GameObject[8, 8];
@@ -230,5 +233,47 @@ public class Game : MonoBehaviour
     public void IncrementMoveCount()
     {
         moveCount += 1;
+    }
+
+    public string GetCurrentPlayer()
+    {
+        return currentPlayer;
+    }
+
+    public bool IsGameOver()
+    {
+        return gameOver;
+    }
+
+    public void NextTurn()
+    {
+        if (currentPlayer == "white")
+        {
+            currentPlayer = "black";
+        }
+        else
+        {
+            currentPlayer = "white";
+        }
+    }
+
+    public void Update()
+    {
+        if (gameOver == true && Input.GetMouseButtonDown(0))
+        {
+            gameOver = false;
+
+            SceneManager.LoadScene("Game");
+        }
+    }
+
+    public void AddMove(string move)
+    {
+        moveHistory[moveCount] = move;
+    }
+
+    public string[] GetMoveHistory()
+    {
+        return moveHistory[];
     }
 }   
