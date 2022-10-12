@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CB_Change : MonoBehaviour
+public class ToOpening : MonoBehaviour
 {
+
     public GameObject controller;
 
-    public void LoadScene(string name)
+
+    public void ChangeToOpening(string gameMode)
     {
-        SceneManager.LoadScene(name);
-
-        controller = GameObject.FindGameObjectWithTag("GameController");
         controller.GetComponent<Game>().SetGameMode("opening");
-
+        Debug.Log(controller.GetComponent<Game>().GetGameMode());
     }
+
 
 }

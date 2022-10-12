@@ -8,10 +8,10 @@ public class PuzzleScript : MonoBehaviour
 {
 
     // stores active move from move order list got by Josh's move script
+    public GameObject controller;
     string currentMove = "";
     string expectedOutput = "";
     [SerializeField] GameObject victoryScreen;
-    string[] playerMoveSet = Game.GetMoveHistory();
     string computersMove = "";
     string prevMove = "";
     bool outcome;
@@ -41,7 +41,7 @@ public class PuzzleScript : MonoBehaviour
     void OpeningPuzzle()
     {
         expectedOutput = "Bc4";
-        if (String.Equals(playerMoveSet[0], expectedOutput))
+        if (String.Equals(controller.GetComponent<Game>().GetMoveHistory(0), expectedOutput))
         {
             // exec success screen
             victoryScreen.SetActive(true);
@@ -59,7 +59,7 @@ public class PuzzleScript : MonoBehaviour
     void midEndGame()
     {
         expectedOutput = "C8=Q";
-        if (String.Equals(playerMoveSet[0], expectedOutput))
+        if (String.Equals(controller.GetComponent<Game>().GetMoveHistory(0), expectedOutput))
         {
             // exec success screen
             victoryScreen.SetActive(true);
@@ -68,7 +68,7 @@ public class PuzzleScript : MonoBehaviour
     void checkmate()
     {
         expectedOutput = "Rg5";
-        if (String.Equals(playerMoveSet[0], expectedOutput))
+        if (String.Equals(controller.GetComponent<Game>().GetMoveHistory(0), expectedOutput))
         {
             // exec success screen
             victoryScreen.SetActive(true);
