@@ -37,9 +37,12 @@ public class PuzzleScript : MonoBehaviour
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         expectedOutput = "Bc4";
         if (String.Equals(controller.GetComponent<Game>().GetMoveHistory(0), expectedOutput))
 =======
+=======
+>>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
 =======
 >>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
 =======
@@ -54,6 +57,9 @@ public class PuzzleScript : MonoBehaviour
         while (true)
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
+=======
 >>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
 =======
 >>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
@@ -75,7 +81,11 @@ public class PuzzleScript : MonoBehaviour
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 else
+=======
+                else 
+>>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
 =======
                 else 
 >>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
@@ -113,6 +123,7 @@ public class PuzzleScript : MonoBehaviour
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         expectedOutput = "C8=Q";
         if (String.Equals(controller.GetComponent<Game>().GetMoveHistory(0), expectedOutput))
         {
@@ -131,6 +142,13 @@ public class PuzzleScript : MonoBehaviour
 =======
 =======
 =======
+=======
+        bool outcome = false;
+        return outcome;
+    }
+    bool checkmate()
+    {
+>>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
         bool outcome = false;
         return outcome;
     }
