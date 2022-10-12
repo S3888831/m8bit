@@ -34,8 +34,19 @@ public class PuzzleScript : MonoBehaviour
 
     bool OpeningPuzzle()
     {
+<<<<<<< HEAD
         expectedOutput = "Bc4";
         if (String.Equals(controller.GetComponent<Game>().GetMoveHistory(0), expectedOutput))
+=======
+        // Italian game
+        string[] puzzleExample1Black = { "e5", "Nc6" };
+        string[] puzzleExample1White = { "e4", "Ne3", "Bb5" };
+        string[] puzzleMoves = new string[6];
+        int moveCount = 0;
+        bool outcome = false;
+        moveCount = 0;
+        while (true)
+>>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
         {
             updateCurrent();
             // If user's move is the expected move in puzzle, register their move and execute next computer move
@@ -49,7 +60,11 @@ public class PuzzleScript : MonoBehaviour
                     puzzleMoves[moveCount + 1] = computersMove;
                     moveCount++;
                 }
+<<<<<<< HEAD
                 else
+=======
+                else 
+>>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
                 {
                     outcome = true; // success, puzzle achieved. Break out of while loop
                     break;
@@ -75,6 +90,7 @@ public class PuzzleScript : MonoBehaviour
     }
     bool midEndGame()
     {
+<<<<<<< HEAD
         expectedOutput = "C8=Q";
         if (String.Equals(controller.GetComponent<Game>().GetMoveHistory(0), expectedOutput))
         {
@@ -90,6 +106,15 @@ public class PuzzleScript : MonoBehaviour
             // exec success screen
             victoryScreen.SetActive(true);
         }
+=======
+        bool outcome = false;
+        return outcome;
+    }
+    bool checkmate()
+    {
+        bool outcome = false;
+        return outcome;
+>>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
     }
 
 }
