@@ -71,6 +71,15 @@ public class MovePlate : MonoBehaviour
 
         Debug.Log(notation);
 
+        if (notation == "Bc4")
+        {
+            controller.GetComponent<Game>().Winner();
+        }
+        else
+        {
+            controller.GetComponent<Game>().Loser();
+        }
+
         switch (controller.GetComponent<Game>().GetMoveCount())
         {
             case 1:
@@ -90,84 +99,8 @@ public class MovePlate : MonoBehaviour
                 break;
         }
 
-        //controller.GetComponent<Game>().textSetter(notation);
 
         controller.GetComponent<Game>().AddMove(notation);
-
-        Debug.Log(controller.GetComponent<Game>().GetMoveHistory());
-
-        ////black king 
-        //if (pieceName == "blackKing")
-        //{
-        //    controller.GetComponent<Game>().SetCastleBlackLeft(false);
-        //    controller.GetComponent<Game>().SetCastleBlackRight(false);
-        //}
-
-        ////white king
-        //if (pieceName == "whiteKing")
-        //{
-        //    controller.GetComponent<Game>().SetCastleWhiteLeft(false);
-        //    controller.GetComponent<Game>().SetCastleWhiteRight(false);
-        //}
-
-        ////white left castle
-        //if (reference.GetComponent<ChessManager>().GetXBoard() == 0 && reference.GetComponent<ChessManager>().GetYBoard() == 0)
-        //{
-        //    controller.GetComponent<Game>().SetCastleWhiteLeft(false);
-        //}
-
-        ////white right castle
-        //if (reference.GetComponent<ChessManager>().GetXBoard() == 7 && reference.GetComponent<ChessManager>().GetYBoard() == 0)
-        //{
-        //    controller.GetComponent<Game>().SetCastleWhiteRight(false);
-        //}
-
-        ////black left castle
-        //if (reference.GetComponent<ChessManager>().GetXBoard() == 0 && reference.GetComponent<ChessManager>().GetYBoard() == 7)
-        //{
-        //    controller.GetComponent<Game>().SetCastleBlackLeft(false);
-        //}
-
-        ////black right castle
-        //if (reference.GetComponent<ChessManager>().GetXBoard() == 7 && reference.GetComponent<ChessManager>().GetYBoard() == 7)
-        //{
-        //    controller.GetComponent<Game>().SetCastleBlackLeft(false);
-        //}
-
-        //bool castling = false;
-        ////check if the player is castling
-        //if ((pieceName == "blackKing" || pieceName == "whiteKing") && Math.Abs((reference.GetComponent<ChessManager>().GetXBoard() - matrixX)) > 1)
-        //{
-        //    castling = true;
-        //}
-
-        //if (castling)
-        //{
-        //    //if black castling right
-        //    if (pieceName == "blackKing")
-        //    {
-        //        if (matrixX == 6)
-        //        {
-
-        //        }
-        //    }
-
-        //    if (pieceName == "whiteKing")
-        //    {
-        //        if (matrixX == 6)
-        //        {
-
-        //        }
-        //    }
-
-        //}
-
-        //Debug.Log(controller.GetComponent<Game>().GetCastleWhiteLeft());
-        //Debug.Log(controller.GetComponent<Game>().GetCastleWhiteRight());
-        //Debug.Log(controller.GetComponent<Game>().GetCastleBlackLeft());
-        //Debug.Log(controller.GetComponent<Game>().GetCastleBlackRight());
-
-        //Debug.Log(reference.GetComponent<ChessManager>().GetKingStatus());
 
         reference.GetComponent<ChessManager>().SetXBoard(matrixX);
         reference.GetComponent<ChessManager>().SetYBoard(matrixY);

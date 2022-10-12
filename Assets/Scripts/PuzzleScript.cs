@@ -7,6 +7,7 @@ public class PuzzleScript : MonoBehaviour
 {
 
     // stores active move from move order list got by Josh's move script
+    public GameObject controller;
     string currentMove = "";
     string computersMove = "";
     string prevMove = "";
@@ -33,14 +34,8 @@ public class PuzzleScript : MonoBehaviour
 
     bool OpeningPuzzle()
     {
-        // Italian game
-        string[] puzzleExample1Black = { "e5", "Nc6" };
-        string[] puzzleExample1White = { "e4", "Ne3", "Bb5" };
-        string[] puzzleMoves = new string[6];
-        int moveCount = 0;
-        bool outcome = false;
-        moveCount = 0;
-        while (true)
+        expectedOutput = "Bc4";
+        if (String.Equals(controller.GetComponent<Game>().GetMoveHistory(0), expectedOutput))
         {
             updateCurrent();
             // If user's move is the expected move in puzzle, register their move and execute next computer move
@@ -54,7 +49,7 @@ public class PuzzleScript : MonoBehaviour
                     puzzleMoves[moveCount + 1] = computersMove;
                     moveCount++;
                 }
-                else 
+                else
                 {
                     outcome = true; // success, puzzle achieved. Break out of while loop
                     break;
@@ -80,13 +75,21 @@ public class PuzzleScript : MonoBehaviour
     }
     bool midEndGame()
     {
-        bool outcome = false;
-        return outcome;
+        expectedOutput = "C8=Q";
+        if (String.Equals(controller.GetComponent<Game>().GetMoveHistory(0), expectedOutput))
+        {
+            // exec success screen
+            victoryScreen.SetActive(true);
+        }
     }
     bool checkmate()
     {
-        bool outcome = false;
-        return outcome;
+        expectedOutput = "Rg5";
+        if (String.Equals(controller.GetComponent<Game>().GetMoveHistory(0), expectedOutput))
+        {
+            // exec success screen
+            victoryScreen.SetActive(true);
+        }
     }
-    
+
 }

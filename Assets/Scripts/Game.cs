@@ -20,18 +20,23 @@ public class Game : MonoBehaviour
     public TMP_Text move4;
     public TMP_Text move5;
 
+    public TMP_Text winner;
+
+    public string gameMode;
+
+
     public string[] moveHistory = new string[5];
 
 
 
     //positions and team for each chess peice
-    private GameObject[,] positions = new GameObject[8, 8];
-    private GameObject[] playerBlack = new GameObject[16];
-    private GameObject[] playerWhite = new GameObject[16];
+    protected GameObject[,] positions = new GameObject[8, 8];
+    protected GameObject[] playerBlack = new GameObject[16];
+    protected GameObject[] playerWhite = new GameObject[16];
 
-    private GameObject[,] underAttack = new GameObject[8, 8];
+    protected GameObject[,] underAttack = new GameObject[8, 8];
 
-    private string currentPlayer = "white";
+    protected string currentPlayer = "white";
 
     // castling 
     private bool castleWhiteRight = true;
@@ -45,6 +50,50 @@ public class Game : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        //// main board
+        //playerWhite = new GameObject[]
+        //{
+        //    Create("whiteRook", 0 , 0),
+        //    Create("whiteKnight", 1, 0),
+        //    Create("whiteBishop", 2, 0),
+        //    Create("whiteQueen", 3, 0),
+        //    Create("whiteKing", 4, 0),
+        //    Create("whiteBishop", 5, 0),
+        //    Create("whiteKnight", 6, 0),
+        //    Create("whiteRook", 7 , 0),
+
+        //    Create("whitePawn", 0 , 1),
+        //    Create("whitePawn", 1 , 1),
+        //    Create("whitePawn", 2 , 1),
+        //    Create("whitePawn", 3 , 1),
+        //    Create("whitePawn", 4 , 1),
+        //    Create("whitePawn", 5 , 1),
+        //    Create("whitePawn", 6 , 1),
+        //    Create("whitePawn", 7 , 1)
+        //};
+
+        //playerBlack = new GameObject[]
+        //{
+        //    Create("blackRook", 0 , 7),
+        //    Create("blackKnight", 1, 7),
+        //    Create("blackBishop", 2, 7),
+        //    Create("blackQueen", 3, 7),
+        //    Create("blackKing", 4, 7),
+        //    Create("blackBishop", 5, 7),
+        //    Create("blackKnight", 6, 7),
+        //    Create("blackRook", 7 , 7),
+
+        //    Create("blackPawn", 0 , 6),
+        //    Create("blackPawn", 1 , 6),
+        //    Create("blackPawn", 2 , 6),
+        //    Create("blackPawn", 3 , 6),
+        //    Create("blackPawn", 4 , 6),
+        //    Create("blackPawn", 5 , 6),
+        //    Create("blackPawn", 6 , 6),
+        //    Create("blackPawn", 7 , 6),
+        //};
+
         playerWhite = new GameObject[]
         {
             Create("whiteRook", 0 , 0),
@@ -53,14 +102,14 @@ public class Game : MonoBehaviour
             Create("whiteQueen", 3, 0),
             Create("whiteKing", 4, 0),
             Create("whiteBishop", 5, 0),
-            Create("whiteKnight", 6, 0),
+            Create("whiteKnight", 5, 2),
             Create("whiteRook", 7 , 0),
 
             Create("whitePawn", 0 , 1),
             Create("whitePawn", 1 , 1),
             Create("whitePawn", 2 , 1),
             Create("whitePawn", 3 , 1),
-            Create("whitePawn", 4 , 1),
+            Create("whitePawn", 4 , 3),
             Create("whitePawn", 5 , 1),
             Create("whitePawn", 6 , 1),
             Create("whitePawn", 7 , 1)
@@ -69,7 +118,7 @@ public class Game : MonoBehaviour
         playerBlack = new GameObject[]
         {
             Create("blackRook", 0 , 7),
-            Create("blackKnight", 1, 7),
+            Create("blackKnight", 2, 5),
             Create("blackBishop", 2, 7),
             Create("blackQueen", 3, 7),
             Create("blackKing", 4, 7),
@@ -81,7 +130,7 @@ public class Game : MonoBehaviour
             Create("blackPawn", 1 , 6),
             Create("blackPawn", 2 , 6),
             Create("blackPawn", 3 , 6),
-            Create("blackPawn", 4 , 6),
+            Create("blackPawn", 4 , 4),
             Create("blackPawn", 5 , 6),
             Create("blackPawn", 6 , 6),
             Create("blackPawn", 7 , 6),
@@ -263,8 +312,24 @@ public class Game : MonoBehaviour
         {
             gameOver = false;
 
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("Main");
         }
+    }
+
+    public void Winner()
+    {
+        gameOver = true;
+
+        winner.text = "YOU WIN!";
+
+    }
+
+    public void Loser()
+    {
+        gameOver = true;
+
+        winner.text = "INCORRECT MOVE";
+
     }
 
     public void AddMove(string move)
@@ -272,8 +337,18 @@ public class Game : MonoBehaviour
         moveHistory[moveCount] = move;
     }
 
-    public string[] GetMoveHistory()
+    public string GetMoveHistory(int x)
     {
-        return moveHistory;
+        return moveHistory[x];
+    }
+
+    public void SetGameMode(string selectedGameMode)
+    {
+        gameMode = selectedGameMode;
+    }
+
+    public string GetGameMode()
+    {
+        return gameMode;
     }
 }   
