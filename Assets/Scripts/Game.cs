@@ -312,7 +312,7 @@ public class Game : MonoBehaviour
         {
             gameOver = false;
 
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene("Main");
         }
     }
 
