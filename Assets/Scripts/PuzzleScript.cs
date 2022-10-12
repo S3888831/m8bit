@@ -35,9 +35,12 @@ public class PuzzleScript : MonoBehaviour
     bool OpeningPuzzle()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         expectedOutput = "Bc4";
         if (String.Equals(controller.GetComponent<Game>().GetMoveHistory(0), expectedOutput))
 =======
+=======
+>>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
         // Italian game
         string[] puzzleExample1Black = { "e5", "Nc6" };
         string[] puzzleExample1White = { "e4", "Ne3", "Bb5" };
@@ -46,6 +49,9 @@ public class PuzzleScript : MonoBehaviour
         bool outcome = false;
         moveCount = 0;
         while (true)
+<<<<<<< HEAD
+>>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
+=======
 >>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
         {
             updateCurrent();
@@ -61,7 +67,11 @@ public class PuzzleScript : MonoBehaviour
                     moveCount++;
                 }
 <<<<<<< HEAD
+<<<<<<< HEAD
                 else
+=======
+                else 
+>>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
 =======
                 else 
 >>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
@@ -91,6 +101,7 @@ public class PuzzleScript : MonoBehaviour
     bool midEndGame()
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         expectedOutput = "C8=Q";
         if (String.Equals(controller.GetComponent<Game>().GetMoveHistory(0), expectedOutput))
         {
@@ -107,6 +118,13 @@ public class PuzzleScript : MonoBehaviour
             victoryScreen.SetActive(true);
         }
 =======
+=======
+        bool outcome = false;
+        return outcome;
+    }
+    bool checkmate()
+    {
+>>>>>>> parent of 2eb3b0e (Merge branch 'master' of https://github.com/S3888831/m8bit)
         bool outcome = false;
         return outcome;
     }
